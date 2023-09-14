@@ -11,7 +11,7 @@ The User Inventory is a web-based application designed to efficiently store and 
 
 ## Getting Started
 
-Clone this repo into your local setup by `git clone` and do an `npm install` followed by `npm run`
+Clone this repo into your local setup by `git clone` and do an `npm install` followed by `npm run start`
 
 ### Prerequisites
 
