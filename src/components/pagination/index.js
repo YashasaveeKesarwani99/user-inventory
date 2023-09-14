@@ -39,7 +39,7 @@ const Pagination = ({cards, setRenderCards}) => {
             <div onClick={pageDown}>◀️</div>
             {pagesArray?.map((_,i)=>{
                 return(
-                    <div onClick={()=>setPageNmber(i+1)} className={(i+1===page) && 'highlight'}>{i+1}</div>
+                    <div onClick={()=>setPageNmber(i+1)} className={(i+1===page) && 'highlight'} key={i}>{i+1}</div>
                 )
             })}
             <div onClick={pageUp}>▶️</div>

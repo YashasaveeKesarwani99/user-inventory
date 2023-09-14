@@ -39,7 +39,7 @@ const Users = () => {
             <div className="cards">
             {renderCards?.map(card =>{
                 return (
-                    <Card key={card.name} card={card} setCards={setCards} cards={cards}
+                    <Card key={card.id} card={card} setCards={setCards} cards={cards}
                     />                    
                 )
             })}

@@ -42,7 +42,7 @@ const Card = ({card, setCards, cards}) =>{
                 {Object.keys(card).map(ele =>{
                     return(
                         ele !=='user-name' && ele !== 'id' &&
-                        <div className='card--second-row'>
+                        <div className='card--second-row' key={ele}>
                         <div>{ele.toUpperCase()} :</div>
                         <div className='card--properties'>{card[ele]}</div>
                         </div>
