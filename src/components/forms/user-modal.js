@@ -10,9 +10,9 @@ const AddUser = ({setOpen, type, setCards, card}) => {
     return(
         <ModalContent heading={heading} setCards={setCards} card={card} type={type} setOpen={setOpen}>
             {type==='view' ?
-                <button onClick={handleClose} >CLOSE</button>
+                <button onClick={handleClose} type="button">CLOSE</button>
             :<>
-                <button onClick={handleClose} className="cancel">CANCEL</button>
+                <button onClick={handleClose} className="cancel" type="button">CANCEL</button>
                 <button type="submit" >SUBMIT</button>
             </>
         }

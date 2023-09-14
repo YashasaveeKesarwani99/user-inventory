@@ -3,7 +3,18 @@ import Modal from "../modal";
 import './modal.sass'
 
 const ModalContent = ({heading, children, setCards, card, type, setOpen}) => {
-    const newCardData = {...card}
+    let newCardData = {...card}
+    if(!card){
+        newCardData = {
+            'user-name':'',
+            'dob': '',
+            'age': '',
+            'food':'',
+            'hobbies':'',
+            'gender':''
+        }
+    }
+
 
     const [errors,setErrors] = useState({})
     const [userData, setUserData] = useState([])
@@ -121,7 +132,7 @@ const ModalContent = ({heading, children, setCards, card, type, setOpen}) => {
                 <div className="modal--content-container">
                 <div className="modal--heading">{heading}</div>
                 <div className="modal--form">
-                    <form onSubmit={handleSubmit} className={type==='view' && 'unclickable'}>
+                    <form onSubmit={handleSubmit} className={type==='view' ? 'unclickable' : undefined}>
                         <div>
                             <label>NAME</label>
                             <input
