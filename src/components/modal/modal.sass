@@ -1,0 +1,93 @@
+@import '../../styles/root'
+
+.modal 
+    position: absolute
+    width:100%
+    height:100%
+    background: rgba(0, 0, 0, 0.5)
+    top: 0
+    left: 0
+    z-index: 10
+
+
+// modal styling
+
+.modal--content
+    position: absolute
+    max-height: 80%
+    height: fit-content
+    top:50%
+    left:50%
+    transform: translate(-50%,-50%)
+    background: white
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1)
+    border-radius: $medium-radius
+
+.modal--content-container
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+    height:100%
+    font-weight: $font-weight-heavy
+
+.modal--heading
+    font-size:40px
+    font-weight: $font-weight-heavy
+    padding: $default-padding
+
+.modal--form
+    height: 60vh
+    overflow: scroll
+
+.modal--form > form
+    display: flex
+    flex-wrap: wrap
+    gap: 50px
+    justify-content: space-between
+    padding: 56px
+
+.modal--form > form > div
+    width: 40%
+    display: flex
+    flex-direction: column
+    gap: $default-gap
+    align-items: flex-start
+
+.modal--radio-buttons
+    display: flex
+    gap: $default-gap
+
+.modal--radio-buttons > label
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+.modal--buttons
+    flex-direction: row !important
+    justify-content: flex-end
+    width: 100% !important
+
+.modal--buttons > button
+    background-color: $primary-blue
+    color: $default
+    border: none
+    border-radius: $medium-radius
+    font-size: $font-large
+    padding: 5px
+    width: 150px
+    pointer-events: auto
+
+    &:hover
+        opacity: 0.8
+
+.unclickable
+    pointer-events: none
+
+@media (max-width: $medium-screen)
+
+    .modal--form > form > div
+        width: 100%
+
+    .modal--form > form
+        padding: 30px

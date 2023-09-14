@@ -1,0 +1,73 @@
+@import '../../styles/root'
+
+.card--container
+    height: fit-content
+    width: $desktop-card
+    border-radius: $large-radius
+    border: $normal-border
+    box-shadow: 2px 6px 4px 0px rgba(0, 0, 0, 0.25)
+
+.card--default-row
+    display: flex
+    justify-content: space-between
+    align-items: center
+    font-size: $font-large
+    font-weight: $font-weight-heavy
+    padding: $medium-padding
+    border-bottom: $normal-border
+
+
+.card--second-row
+    display: flex
+    font-size: $font-medium
+    flex-direction: row
+    justify-content: space-between
+    width: 70%
+    padding: $medium-padding
+
+.card--third-row
+    border-top: $normal-border
+    display: flex
+    justify-content: space-between
+    padding: $medium-padding
+    font-size: $font-small
+
+.card--third-row > button 
+    width: 90px
+    border: none
+    padding: 5px
+    color: white
+    border-radius: $medium-radius
+
+    &:hover
+        opacity: 0.8
+    
+.card--third-row > button:nth-child(1)
+    background: $primary-red
+
+.card--third-row > button:not(:nth-child(1))
+    background: $primary-blue
+
+
+.card--properties
+    font-weight: $font-weight-heavy
+    text-align: left
+    width: 60%
+
+
+.card--icon
+    height: 30px
+    width: 30px
+    border-radius: 100%
+    flex-shrink: 0
+    background-color: black
+
+.yellow
+    background: $primary-yellow
+
+.pink
+    background: $primary-pink
+
+.green
+    background: $primary-green
+
