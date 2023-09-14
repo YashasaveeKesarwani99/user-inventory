@@ -1,5 +1,6 @@
-import ModalContent from "../modal/modal-content";
 import './user-modal.sass'
+import ModalContent from "../modal/modal-content";
+
 
 const AddUser = ({setOpen, type, setCards, card}) => {
 

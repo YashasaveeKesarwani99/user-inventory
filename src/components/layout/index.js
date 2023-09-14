@@ -1,7 +1,6 @@
-// higher order component to deliver child components
-
-import { BiUserCircle }  from 'react-icons/bi'
+// higher order component to render child components
 import './layout.sass'
+import { BiUserCircle }  from 'react-icons/bi'
 import { userInventory } from '../../config/constants'
 
 const Layout = ({children}) => {

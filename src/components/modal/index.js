@@ -1,4 +1,3 @@
-// higher order component for modals
 import './modal.sass'
 
 const Modal = ({children})=>{

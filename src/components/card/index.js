@@ -1,8 +1,7 @@
-// to be added - best way to add background colors inside the icon 
-
+import './card.sass';
 import { useEffect, useState } from 'react';
 import UserModal from '../forms/user-modal';
-import './card.sass';
+import { getIconClasses } from '../../utils/get-icon-classes';
 
 const Card = ({card, setCards, cards}) =>{
 
@@ -17,9 +16,7 @@ const Card = ({card, setCards, cards}) =>{
     }
 
     useEffect(()=>{
-        if(card.age < 25) setIconClass('green')
-        else if (card.age > 25 && card.age < 50) setIconClass('pink')
-        else setIconClass('yellow')
+        getIconClasses({setIconClass, card})
     },[card])
 
 

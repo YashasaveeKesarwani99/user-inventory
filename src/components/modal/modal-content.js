@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Modal from "../modal";
 import './modal.sass'
+import { getValidatedForm } from '../../utils/get-validated-form';
 
 const ModalContent = ({heading, children, setCards, card, type, setOpen}) => {
     let newCardData = {...card}
@@ -32,7 +33,6 @@ const ModalContent = ({heading, children, setCards, card, type, setOpen}) => {
 
             setUserData(parsedData)
         }
-
     },[])
 
     const handleChange = (e) => {
@@ -47,9 +47,12 @@ const ModalContent = ({heading, children, setCards, card, type, setOpen}) => {
 
         let newUserData = userData
 
-        const validated = validateForm(formData)
+        // Form Validation
+        const validated = getValidatedForm({formData, setErrors})
 
         if(validated) {
+            
+            // If EDIT modal is open
             if(type !== 'edit')
             {
                 let data = {
@@ -57,11 +60,13 @@ const ModalContent = ({heading, children, setCards, card, type, setOpen}) => {
                     id: new Date().getTime()
                 }
 
+                // Add new user object locally
                 newUserData.push(data)
 
+                // Updating local state
                 setUserData(newUserData)
 
-                //refresh lists on homepage
+                // Refresh lists on homepage
                 setCards(newUserData)
 
                 // Convert data into json
@@ -69,10 +74,13 @@ const ModalContent = ({heading, children, setCards, card, type, setOpen}) => {
     
                 // Store the JSON string in local storage with a specific key
                 localStorage.setItem('userData', jsonData);
-            } else {
+            } 
+
+            // if ADD modal is open
+            else {
             let data = formData    
 
-                //getting updated array 
+                // Getting updated array 
                 const updatedUserData = userData.map((obj) => {
                     if (obj.id === data.id) {
                       return data; // Replace with the new object
@@ -81,50 +89,23 @@ const ModalContent = ({heading, children, setCards, card, type, setOpen}) => {
                     }
                   });
     
+                // Updating local array
                 setUserData(updatedUserData)
 
-                //refresh lists on homepage
+                // Refresh lists on homepage
                 setCards(updatedUserData)
 
                 // Convert data into json
-                const jsonData = JSON.stringify(newUserData)
+                const jsonData = JSON.stringify(updatedUserData)
     
                 // Store the JSON string in local storage with a specific key
                 localStorage.setItem('userData', jsonData);          
             }  
+
             // close the modal after submition
             setOpen(false)  
         }
     }
-
-
-// put this inside utils folder [todo]
-    const validateForm = (formData) =>{
-        let errors = {}
-
-        if(!formData['user-name']) errors['user-name'] = 'Name is required!' 
-        
-        if(!formData.age) errors.age = 'Age is required!'
-
-        if(!formData.dob) errors.dob = 'Date of Birth is required!'
-
-        if(!formData.food) errors.food = 'Select food item!'
-
-        if(!formData.hobbies) errors.hobbies = 'Add your hobby!'
-
-        if(!formData.gender) errors.gender = 'Select your gender!'
-
-        if(formData?.hobbies?.length > 150) errors.hobbies = 'Not more than 150 characters'
-
-
-        setErrors(errors)
-        if(!Object.keys(errors).length){
-            return true
-        } 
-        return false
-    }
-
-
 
     return(
         <Modal>
@@ -202,7 +183,7 @@ const ModalContent = ({heading, children, setCards, card, type, setOpen}) => {
 
                         <div>
                             <label>FAVOURITE FOOD</label>
-                            <select name="food" selected={formData?.food} onChange={handleChange}>
+                            <select name="food" value={formData?.food} onChange={handleChange}>
                                 <option value="">SELECT FOOD ITEM</option>
                                 <option value="pizza">PIZZA</option>
                                 <option value="burger">BURGER</option>
