@@ -26,6 +26,14 @@ const Users = () => {
         setOpen(true)
     }
 
+    useEffect(()=>{
+        if(open) window.document.body.style.overflow = 'hidden'
+
+        else {
+            window.document.body.style.overflow = 'scroll'
+        }
+    },[open])
+
     return(
         <>
         {open && <UserModal type="add" setOpen={setOpen} setCards={setCards}/>}

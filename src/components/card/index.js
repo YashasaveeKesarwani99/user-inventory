@@ -19,6 +19,14 @@ const Card = ({card, setCards, cards}) =>{
         getIconClasses({setIconClass, card})
     },[card])
 
+    useEffect(()=>{
+        if(open) window.document.body.style.overflow = 'hidden'
+
+        else {
+            window.document.body.style.overflow = 'scroll'
+        }
+    },[open])
+
 
     const deleteHandler = () => {
         const updatedCards = cards.filter((singleCard)=> singleCard.id !== card.id)
