@@ -2,6 +2,7 @@ import './card.sass';
 import { useEffect, useState } from 'react';
 import UserModal from '../forms/user-modal';
 import { getIconClasses } from '../../utils/get-icon-classes';
+import { disableScrolling } from '../../utils/disable-scrolling';
 
 const Card = ({card, setCards, cards}) =>{
 
@@ -15,19 +16,18 @@ const Card = ({card, setCards, cards}) =>{
         setOpen(true)
     }
 
+    // Get icon class according to the age
     useEffect(()=>{
         getIconClasses({setIconClass, card})
     },[card])
 
+    // Disable scrolling when modal is on display
     useEffect(()=>{
-        if(open) window.document.body.style.overflow = 'hidden'
-
-        else {
-            window.document.body.style.overflow = 'scroll'
-        }
+        disableScrolling(open)
     },[open])
 
 
+    // Delete card functionality
     const deleteHandler = () => {
         const updatedCards = cards.filter((singleCard)=> singleCard.id !== card.id)
         setCards(updatedCards)

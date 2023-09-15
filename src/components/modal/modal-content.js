@@ -4,6 +4,8 @@ import './modal.sass'
 import { getValidatedForm } from '../../utils/get-validated-form';
 
 const ModalContent = ({heading, children, setCards, card, type, setOpen}) => {
+
+    // Initializing controlled components
     let newCardData = {...card}
     if(!card){
         newCardData = {
@@ -16,11 +18,11 @@ const ModalContent = ({heading, children, setCards, card, type, setOpen}) => {
         }
     }
 
-
     const [errors,setErrors] = useState({})
     const [userData, setUserData] = useState([])
     const [formData, setFormData] = useState(newCardData)
 
+    // Modal close on outside click
     window.addEventListener('click', (e)=>{
         if(e.target.className === 'modal' && e.target.className !== 'modal--content') setOpen(false)
     })
@@ -35,6 +37,7 @@ const ModalContent = ({heading, children, setCards, card, type, setOpen}) => {
         }
     },[])
 
+    // Handling onChange events of form elements
     const handleChange = (e) => {
         const { name, value } = e.target;
 

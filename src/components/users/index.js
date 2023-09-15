@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
-import { addUsers, listOfUsers } from "../../config/constants";
-import Card from "../card";
-import UserModal from "../forms/user-modal";
 import './users.sass'
+import Card from "../card";
 import Pagination from "../pagination";
+import { useState, useEffect } from "react";
+import UserModal from "../forms/user-modal";
+import { addUsers, listOfUsers } from "../../config/constants";
+import { disableScrolling } from "../../utils/disable-scrolling";
 
 
 const Users = () => {
@@ -12,6 +13,7 @@ const Users = () => {
     const [cards, setCards] = useState([])
     const [renderCards, setRenderCards] = useState([])
 
+    // Adding/Initializing local state with data in local storage
     useEffect(()=>{
             const localData = localStorage.getItem('userData')
 
@@ -26,12 +28,9 @@ const Users = () => {
         setOpen(true)
     }
 
+    // Disable scroll when modal is in display
     useEffect(()=>{
-        if(open) window.document.body.style.overflow = 'hidden'
-
-        else {
-            window.document.body.style.overflow = 'scroll'
-        }
+        disableScrolling(open)
     },[open])
 
     return(
