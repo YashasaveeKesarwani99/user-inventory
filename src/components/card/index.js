@@ -44,7 +44,8 @@ const Card = ({card, setCards, cards}) =>{
                 <div className='card--name'>{card['user-name'].toUpperCase()}</div>
                 <div className={`card--icon ${iconClass}`}></div>  
             </div>
-                {Object.keys(card).map(ele =>{
+            <div className='card--second-row-container'>
+                {Object.keys(card).sort().map(ele =>{
                     return(
                         ele !=='user-name' && ele !== 'id' &&
                         <div className='card--second-row' key={ele}>
@@ -52,7 +53,8 @@ const Card = ({card, setCards, cards}) =>{
                         <div className='card--properties'>{card[ele]}</div>
                         </div>
                     )
-                })}             
+                })}  
+            </div>           
             <div className='card--third-row'>
                 <button onClick={deleteHandler}>DELETE</button>
                 <button onClick={()=>handleOpen("view")}>VIEW</button>
