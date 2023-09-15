@@ -15,8 +15,6 @@ export const getValidatedForm = ({formData, setErrors}) => {
 
     if(formData?.hobbies?.length > 150) errors.hobbies = 'Not more than 150 characters'
 
-    console.log(formData?.hobbies?.length)
-
     setErrors(errors)
     if(!Object.keys(errors).length){
         return true
